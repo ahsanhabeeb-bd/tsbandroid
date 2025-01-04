@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "244238535135",
+    "project_id": "tsbaa-2d138",
+    "storage_bucket": "tsbaa-2d138.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244238535135:android:ae57f9e3a3f78664bf9c6a",
+        "android_client_info": {
+          "package_name": "com.torontoshine.torontoshine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBij1-DDGfq5IOgAxH0FiaWOQ9gag0p5sU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244238535135:android:09aeb72310b91a20bf9c6a",
+        "android_client_info": {
+          "package_name": "com.tsb.tsbandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBij1-DDGfq5IOgAxH0FiaWOQ9gag0p5sU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244238535135:android:cf4e055ffa376105bf9c6a",
+        "android_client_info": {
+          "package_name": "com.tsbgo.tsbgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBij1-DDGfq5IOgAxH0FiaWOQ9gag0p5sU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
