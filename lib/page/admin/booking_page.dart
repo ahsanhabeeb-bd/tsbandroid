@@ -812,7 +812,7 @@ Toronto, ON, M2P 1T7
                             updateData['phoneRemainder'] = phone;
                             sendSms(phone, '''Dear $clientName, 
 Thank you for booking with Toronto ShineBright Cleaning Services, Your booking has been rescheduled.
-Your new booking is confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(orderDateTime).toLocal())}
+Your new booking is confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}
 If you have any questions or concerns, please don’t hesitate to get in touch with us.
 Thank you. 
 torontoshinebright.ca
@@ -840,7 +840,7 @@ M: 6472213051''');
 
 Thank you for booking with Toronto ShineBright Cleaning Services.
 
-Your booking is confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(orderDateTime).toLocal())}
+Your booking is confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}
 
 ${emailMessageController.text}
 
