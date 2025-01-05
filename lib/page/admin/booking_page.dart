@@ -322,7 +322,7 @@ M: 6472213051''');
                                     'Toronto ShineBright Cleaning services')
                                 ..recipients.add(email)
                                 ..subject =
-                                    'Booking confirmation accepted, Toronto ShineBright Cleaning services.'
+                                    'Booking confirmation, Toronto ShineBright Cleaning services.'
                                 ..text = ''' Dear $clientName,
 
 Thank you for booking with Toronto ShineBright Cleaning Services.
@@ -629,12 +629,23 @@ Toronto, ON, M2P 1T7
                                     // Format the DateTime into the desired format
                                     selectedDateAndTime =
                                         "${combinedDateTime.toIso8601String()}"; // This formats it to "2024-12-28T17:39:00.000"
+                                    print(
+                                        "ppppppppppppppppppppppp$selectedDateAndTime");
                                   });
                                 }
                               }
                             },
                             child: const Text("New Booking Date and Time"),
                           ),
+
+                          const SizedBox(height: 10),
+                          // if (selectedDateAndTime != null)
+                          //   Text(
+                          //     "${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}",
+                          //     style: const TextStyle(color: Colors.blue),
+                          //     overflow: TextOverflow.ellipsis,
+                          //   ),
+
                           const SizedBox(height: 10),
                           TextButton(
                             onPressed: () {
@@ -835,12 +846,12 @@ M: 6472213051''');
                                     'Toronto ShineBright Cleaning services')
                                 ..recipients.add(email)
                                 ..subject =
-                                    'Booking confirmation rescheduled, Toronto ShineBright Cleaning services.'
+                                    'Booking has been rescheduled, Toronto ShineBright Cleaning services.'
                                 ..text = ''' Dear $clientName,
 
 Thank you for booking with Toronto ShineBright Cleaning Services.
 
-Your booking is confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}
+Your booking has been confirmed for ${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}
 
 ${emailMessageController.text}
 
@@ -991,7 +1002,7 @@ M: 6472213051''');
                                 'Toronto ShineBright Cleaning services')
                             ..recipients.add(clientEmail)
                             ..subject =
-                                'Booking confirmation cancelled, Toronto ShineBright Cleaning services.'
+                                'Booking has been cancelled, Toronto ShineBright Cleaning services.'
                             ..text = """ Dear $clientName, 
 
 Thank you for booking with Toronto ShineBright Cleaning Services. Your booking has been cancelled.
@@ -1234,7 +1245,7 @@ Toronto, ON, M2P 1T7
                             ElevatedButton(
                               onPressed: () => _edit(order.id, username, phone,
                                   email, status, username, orderDateTime1),
-                              child: const Text("edit"),
+                              child: const Text("Edit"),
                             ),
                             const SizedBox(width: 10),
                             ElevatedButton(
@@ -1246,7 +1257,7 @@ Toronto, ON, M2P 1T7
                                   status,
                                   username,
                                   orderDateTime1),
-                              child: const Text("confirm"),
+                              child: const Text("Confirm"),
                             ),
                             const SizedBox(width: 10),
                             ElevatedButton(
