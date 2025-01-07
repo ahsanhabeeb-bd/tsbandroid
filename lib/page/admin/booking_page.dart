@@ -204,48 +204,40 @@ class _BookingPageState extends State<BookingPage> {
                           ],
 
                           // DateTime Picker for remainderDate
-                          Row(
-                            children: [
-                              TextButton(
-                                onPressed: () async {
-                                  DateTime? pickedDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime.now(),
-                                    lastDate: DateTime(2100),
-                                  );
-                                  if (pickedDate != null) {
-                                    TimeOfDay? pickedTime =
-                                        await showTimePicker(
-                                      context: context,
-                                      initialTime: TimeOfDay.now(),
+                          TextButton(
+                            onPressed: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2100),
+                              );
+                              if (pickedDate != null) {
+                                TimeOfDay? pickedTime = await showTimePicker(
+                                  context: context,
+                                  initialTime: TimeOfDay.now(),
+                                );
+                                if (pickedTime != null) {
+                                  setDialogState(() {
+                                    remainderDate = DateTime(
+                                      pickedDate.year,
+                                      pickedDate.month,
+                                      pickedDate.day,
+                                      pickedTime.hour,
+                                      pickedTime.minute,
                                     );
-                                    if (pickedTime != null) {
-                                      setDialogState(() {
-                                        remainderDate = DateTime(
-                                          pickedDate.year,
-                                          pickedDate.month,
-                                          pickedDate.day,
-                                          pickedTime.hour,
-                                          pickedTime.minute,
-                                        );
-                                      });
-                                    }
-                                  }
-                                },
-                                child:
-                                    const Text("Select Remainder Date & Time"),
-                              ),
-                              if (remainderDate != null)
-                                Expanded(
-                                  child: Text(
-                                    "${remainderDate!.toLocal()}".split('.')[0],
-                                    style: const TextStyle(color: Colors.blue),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                            ],
+                                  });
+                                }
+                              }
+                            },
+                            child: const Text("Select Remainder Date & Time"),
                           ),
+                          if (remainderDate != null)
+                            Text(
+                              "${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(remainderDate.toString()).toLocal())}",
+                              style: const TextStyle(color: Colors.blue),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                         ],
                       ),
                     );
@@ -613,7 +605,7 @@ Toronto, ON, M2P 1T7
                                 );
 
                                 if (pickedTime != null) {
-                                  setState(() {
+                                  setDialogState(() {
                                     selectedDate = pickedDate;
                                     selectedTime = pickedTime;
 
@@ -628,9 +620,9 @@ Toronto, ON, M2P 1T7
 
                                     // Format the DateTime into the desired format
                                     selectedDateAndTime =
-                                        "${combinedDateTime.toIso8601String()}"; // This formats it to "2024-12-28T17:39:00.000"
+                                        combinedDateTime.toIso8601String();
                                     print(
-                                        "ppppppppppppppppppppppp$selectedDateAndTime");
+                                        "Selected Date and Time: $selectedDateAndTime");
                                   });
                                 }
                               }
@@ -639,12 +631,12 @@ Toronto, ON, M2P 1T7
                           ),
 
                           const SizedBox(height: 10),
-                          // if (selectedDateAndTime != null)
-                          //   Text(
-                          //     "${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime!).toLocal())}",
-                          //     style: const TextStyle(color: Colors.blue),
-                          //     overflow: TextOverflow.ellipsis,
-                          //   ),
+                          if (selectedDateAndTime != null)
+                            Text(
+                              "${DateFormat('yyyy-MM-dd hh:mm a', 'en_US').format(DateTime.parse(selectedDateAndTime.toString()).toLocal())}",
+                              style: const TextStyle(color: Colors.blue),
+                              overflow: TextOverflow.ellipsis,
+                            ),
 
                           const SizedBox(height: 10),
                           TextButton(
