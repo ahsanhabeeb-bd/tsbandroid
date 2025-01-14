@@ -14,7 +14,6 @@ class _ClintPageState extends State<ClintPage> {
   TextEditingController searchController = TextEditingController();
   String searchQuery = '';
 
-  // Function to open the dialog to add a new client
   void _addClint() {
     final TextEditingController usernameController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
@@ -27,7 +26,7 @@ class _ClintPageState extends State<ClintPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Add Clint"),
+          title: const Text("Add Client"),
           content: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -182,7 +181,7 @@ class _ClintPageState extends State<ClintPage> {
                   }
                 }
               },
-              child: const Text("Add Clint"),
+              child: const Text("Add Client"),
             ),
           ],
         );
@@ -664,7 +663,7 @@ class _ClintPageState extends State<ClintPage> {
         actions: [
           ElevatedButton(
             onPressed: _addClint, // Open the dialog when button is pressed
-            child: const Text("Add Clint"),
+            child: const Text("Add Client"),
           )
         ],
       ),

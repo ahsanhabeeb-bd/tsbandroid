@@ -1257,7 +1257,7 @@ Toronto, ON, M2P 1T7
                                 _reject(context, orderId, email, status,
                                     username, orderDateTime, phone);
                               },
-                              child: const Text("Cancle"),
+                              child: const Text("Cancel"),
                             ),
                           ],
                         ),
