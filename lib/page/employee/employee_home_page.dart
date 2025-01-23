@@ -458,6 +458,61 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     }
   }
 
+  Future<void> _deleteAccount(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    final accountId = prefs.getString('id');
+
+    if (accountId == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("No account ID found in SharedPreferences")),
+      );
+      return;
+    }
+
+    // Show confirmation dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirm Delete"),
+          content: const Text("Are you sure you want to delete this account?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.of(context).pop(); // Close the dialog
+
+                try {
+                  // Delete the document from Firestore
+                  await FirebaseFirestore.instance
+                      .collection(
+                          'employees') // Replace with your collection name
+                      .doc(accountId)
+                      .delete();
+
+                  // Clear all SharedPreferences
+                  await prefs.clear();
+                } catch (e) {
+                  // Show error message if deletion fails
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Error deleting account: $e")),
+                  );
+                }
+              },
+              child: const Text("Confirm"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<Map<String, String>> _getemployeeData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -559,6 +614,20 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
               leading: const Icon(Icons.email),
               title: const Text("Change email"),
               onTap: _changeEmail,
+            ),
+            ListTile(
+              leading: const Icon(Icons.delete),
+              title: const Text("Delete Account"),
+              onTap: () {
+                Navigator.of(context).pop();
+                _deleteAccount(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
